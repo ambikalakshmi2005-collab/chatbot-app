@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Chat Bot</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .chat-box {
+            height: 220px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 75%;
+            padding: 8px;
+        }
+
+        button {
+            width: 22%;
+            padding: 8px;
+        }
+
+        .user {
+            color: blue;
+        }
+
+        .bot {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="chat-container">
+    <h3>Chat Bot</h3>
+
+    <div class="chat-box" id="chat"></div>
+
+    <input type="text" id="userInput" placeholder="Ask something...">
+    <button onclick="send()">Send</button>
+</div>
+
+<script>
+function send() {
+    let input = document.getElementById("userInput").value;
+    let chat = document.getElementById("chat");
+
+    if (input === "") return;
+
+    chat.innerHTML += "<p class='user'><b>You:</b> " + input + "</p>";
+
+    let reply = "";
+
+    if (input.toLowerCase().includes("hello")) {
+        reply = "Hello! How can I help you?";
+    }
+    else if (input.toLowerCase().includes("your name")) {
+        reply = "I am a simple chatbot.";
+    }
+    else if (input.toLowerCase().includes("html")) {
+        reply = "HTML is used to create web pages.";
+    }
+    else if (input.toLowerCase().includes("css")) {
+        reply = "CSS is used to style web pages.";
+    }
+    else if (input.toLowerCase().includes("javascript")) {
+        reply = "JavaScript adds interactivity to websites.";
+    }
+    else {
+        reply = "Sorry, I don't understand that yet.";
+    }
+
+    chat.innerHTML += "<p class='bot'><b>Bot:</b> " + reply + "</p>";
+    document.getElementById("userInput").value = "";
+}
+</script>
+
+</body>
+</html>
